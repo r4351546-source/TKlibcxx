@@ -1,13 +1,15 @@
-
-#ifndef TK_OSTREAM_HXX
-#define TK_OSTREAM_HXX
+#pragma once
+#include "../../string/bits/char_traits.hxx"
 
 namespace std {
 
 template<typename CharT>
 class basic_streambuf;
 
-template<typename CharT>
+template<
+    typename CharT,
+    typename Traits = char_traits<CharT>
+>
 class basic_ostream {
 public:
     using char_type = CharT;
@@ -61,5 +63,3 @@ public:
 using ostream = basic_ostream<char>;
 
 }
-
-#endif
