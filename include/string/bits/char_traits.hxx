@@ -22,6 +22,41 @@ struct char_traits<char> {
         return c1 < c2;
     }
 
+    static char_type* move(
+    char_type* dest,
+    const char_type* src,
+    unsigned long count
+    ) {
+    if (dest > src) {
+        for (unsigned long i = count; i > 0; --i) {
+            dest[i - 1] = src[i - 1];
+        }
+    } 
+    else {
+        for (unsigned long i = 0; i < count; ++i) {
+            dest[i] = src[i];
+        }
+    }
+
+    return dest;
+    }
+
+    static const char_type* find(
+    const char_type* str,
+    unsigned long count,
+    const char_type& ch
+    ) {
+    for (unsigned long i = 0; i < count; ++i) {
+        
+        if(str[i] == ch) {
+            return &str[i];
+        }
+        return nullptr;
+    }
+
+    return nullptr;
+    }
+
     static unsigned long length(const char_type* str) {
         unsigned long count = 0;
         while(str[count] != '\0') {
@@ -47,6 +82,9 @@ struct char_traits<char> {
 
     return 0;
     }
+    
+
 };
 
-}
+
+
