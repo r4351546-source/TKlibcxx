@@ -22,6 +22,14 @@ struct char_traits<char> {
         return c1 < c2;
     }
 
+    static unsigned long length(const char_type* str) {
+        unsigned long count = 0;
+        while(str[count] != '\0') {
+            count++;
+        }
+        return count;
+    }
+
     static int compare(
     const char_type* s1,
     const char_type* s2,
